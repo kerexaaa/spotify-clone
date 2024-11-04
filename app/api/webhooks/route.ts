@@ -32,9 +32,13 @@ export async function POST(request: Request) {
   try {
     if (!sig || !webhookSecret) return;
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
-  } catch (error: any) {
-    console.log(`An error occured on webhook router line 37${error.message}`);
-    return new NextResponse(`Webhook error: ${error.message}`, { status: 400 });
+  } catch (error) {
+    console.log(
+      `An error occured on webhook router line 37 ${(error as Error).message}`
+    );
+    return new NextResponse(`Webhook error: ${(error as Error).message}`, {
+      status: 400,
+    });
   }
   if (relevantEvents.has(event.type)) {
     try {

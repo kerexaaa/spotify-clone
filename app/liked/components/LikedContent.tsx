@@ -25,7 +25,7 @@ const LikedContent = ({ songs }: LikedContentProps) => {
   if (songs.length === 0) {
     return (
       <div className="flex flex-col gap-y-2 w-full px-6 text-neutral-400">
-        There's no liked songs.
+        There&apos;s no liked songs.
       </div>
     );
   }

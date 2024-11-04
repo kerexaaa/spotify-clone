@@ -23,7 +23,7 @@ const Header = ({ children, className }: HeaderProps) => {
   const router = useRouter();
   const { onOpen } = useAuthModal();
   const supabaseClient = useSupabaseClient();
-  const { user, subscription } = useUser();
+  const { user } = useUser();
   const params = useSearchParams();
   const player = usePlayer();
   const handleLogout = async () => {
@@ -44,7 +44,7 @@ const Header = ({ children, className }: HeaderProps) => {
 
       toast.error(errorDescription);
     }
-  }, []);
+  }, [router]);
 
   return (
     <div

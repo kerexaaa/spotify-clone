@@ -35,8 +35,10 @@ export async function POST() {
     });
 
     return NextResponse.json({ url });
-  } catch (error: any) {
-    console.log(`An error occured in portal link on line 39 ${error}`);
+  } catch (error) {
+    console.log(
+      `An error occured in portal link on line 39 ${(error as Error).message}`
+    );
     return new NextResponse("Internal Error", { status: 500 });
   }
 }

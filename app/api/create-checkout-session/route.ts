@@ -43,8 +43,10 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ sessionId: session.id });
-  } catch (error: any) {
-    console.log(`An error occured on checkout session line 47 ${error}`);
+  } catch (error) {
+    console.log(
+      `An error occured on checkout session line 47 ${(error as Error).message}`
+    );
     return new NextResponse("Internal error", { status: 500 });
   }
 }
